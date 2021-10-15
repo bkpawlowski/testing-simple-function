@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'groovy'
+}
+
+group 'pl.grizzlysoftware'
+version '1.0-SNAPSHOT'
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+    }
+    test {
+        groovy {
+            srcDirs = ['src/test/groovy']
+        }
+    }
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(16))
+    }
+}
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    testImplementation group: 'org.spockframework', name: 'spock-core', version: '2.0-groovy-3.0'
+    testImplementation group: 'org.codehaus.groovy', name: 'groovy-all', version: '3.0.0', ext: 'pom'
+    test.useJUnitPlatform()
+}
